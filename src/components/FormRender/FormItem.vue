@@ -60,15 +60,14 @@ export default {
       const originInput = handlers.input
       handlers.change = (val) => {
         // this.$emit('input', val)
-        console.log(val, 'change')
-        this.FR.checkHideItem(this.config)
+        // console.log(val, 'change')
         // this.$set(this.FR.model, this.config.name, val)
         originChange && originChange.call(this.FR, val, this.FR.eleFields, this.FR.model)
       }
       handlers.input = (val) => {
         // this.$set(this.model, this.config.name, val)
         this.FR.updateValue(this.config.name, val)
-        console.log('input', this.FR.model, this.config.name)
+        // console.log('input', this.FR.model, this.config.name)
         // this.$forceUpdate()
         originInput && originInput.call(this.FR, val, this.FR.eleFields, this.FR.model)
       }

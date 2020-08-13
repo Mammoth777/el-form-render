@@ -34,7 +34,7 @@ const config = [
     uiOn: {
       change (val, schema, model, event) {
         // this: FormRender vm instance
-        console.log({ val, schema, model, event }, 'onchange')
+        console.log({ val, schema, model, event }, '来自配置json的log')
         const config = schema.find(s => s.name === 'title')
         this.$set(config, 'label', val + '名称')
         // config.label = val + '名称'
@@ -68,10 +68,12 @@ const config = [
         { label: 'BBB', value: 2 }
       ]
     },
-    uiOn: {}
+    uiOn: {},
+    colSpan: 12
   },
   {
-    slot: 'getListButton'
+    slot: 'getListButton',
+    colSpan: 12
   }
 ]
 

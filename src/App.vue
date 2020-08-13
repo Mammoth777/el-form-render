@@ -2,20 +2,29 @@
   <div id="app">
     <div class="show-part">
       <form-render
+        ref="form"
         :formProps="{
           labelPosition: 'left',
           labelWidth: '120px'
         }"
         :fields="testData"
+        :formModel="model"
       >
         <template slot="getListButton">
-          <div>
-            测试插槽:
+          <div class="vertical-align-center">
+            <span>
+              测试插槽:
+            </span>
             <el-button size="small" @click="updateConfig">更新下拉列表</el-button>
           </div>
         </template>
       </form-render>
     </div>
+    <div>
+      <el-button @click="model = $refs.form.getData()">getData</el-button> <br>
+      <pre v-text="model" class="code-part"></pre>
+    </div>
+    <pre v-text="testData" class="code-part"></pre>
   </div>
 </template>
 
@@ -37,9 +46,10 @@ export default {
   methods: {
     updateConfig () {
       const schema = this.testData.find(c => c.name === 'testSelect')
+      const len = schema.uiProp.options.length
       schema.uiProp.options.push({
-        label: 'CCC',
-        value: 3
+        label: new Array(3).fill(String.fromCharCode(65 + len)).join(''),
+        value: len
       })
     }
   }
@@ -47,10 +57,23 @@ export default {
 </script>
 
 <style lang="scss">
+#app {
+  display: flex;
+}
 .show-part {
-  margin: 100px auto;
+  margin: 80px auto;
   width: 500px;
   background: #fafafa;
   padding: 20px;
+}
+.vertical-align-center {
+  line-height: 40px;
+}
+.code-part {
+  height: 90vh;
+  overflow: auto;
+  background-color: #fafafa;
+  margin: 0 10px;
+  padding: 0 10px;
 }
 </style>
