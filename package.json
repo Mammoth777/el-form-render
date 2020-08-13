@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "element-ui": "^2.13.2",
+    "lodash": "^4.17.19",
+    "nested-property": "^2.0.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {

@@ -1,28 +1,56 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="show-part">
+      <form-render
+        :formProps="{
+          labelPosition: 'left',
+          labelWidth: '120px'
+        }"
+        :fields="testData"
+      >
+        <template slot="getListButton">
+          <div>
+            测试插槽:
+            <el-button size="small" @click="updateConfig">更新下拉列表</el-button>
+          </div>
+        </template>
+      </form-render>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FormRender from '@/components/FormRender/index.vue'
+import testData from './test'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    FormRender
+  },
+  data () {
+    return {
+      testData,
+      model: {}
+    }
+  },
+  methods: {
+    updateConfig () {
+      const schema = this.testData.find(c => c.name === 'testSelect')
+      schema.uiProp.options.push({
+        label: 'CCC',
+        value: 3
+      })
+    }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.show-part {
+  margin: 100px auto;
+  width: 500px;
+  background: #fafafa;
+  padding: 20px;
 }
 </style>

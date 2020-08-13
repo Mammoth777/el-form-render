@@ -1,5 +1,12 @@
 # form-render-vue
 
+> json 生成表单
+
+需求点:
+- [x] 不同type生成不同表单元素
+- [x] 表单元素绑定props和events
+- [ ] if条件判断元素显示隐藏
+
 ## Project setup
 ```
 npm install
