@@ -69,7 +69,7 @@ const config = [
       ]
     },
     uiOn: {},
-    colSpan: 12
+    colSpan: 12 // 1-24
   },
   {
     slot: 'getListButton',
