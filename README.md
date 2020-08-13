@@ -7,6 +7,7 @@
 - [x] 表单元素绑定props和events
 - [x] 条件判断元素显示隐藏
 - [x] 表单元素宽度设置
+- [x] 单个表单元素改变, 触发 `on-${name}-change`事件
 
 ## Project setup
 ```

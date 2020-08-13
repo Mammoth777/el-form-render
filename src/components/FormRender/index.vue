@@ -26,10 +26,8 @@
 <script>
 import FormItem from './FormItem.vue'
 import uniqBy from 'lodash/uniqBy'
-import { setNestedProperty, getNestedProperty } from './utils'
+import { setNestedProperty, getNestedProperty, createExecList } from './utils'
 import cloneDeep from 'lodash/cloneDeep'
-import isFunction from 'lodash/isFunction'
-import isNumber from 'lodash/isNumber'
 
 /**
  * 验证名称重复
@@ -50,45 +48,7 @@ function checkTypeExist (schema) {
   return true
 }
 
-class ExecQueue {
-  constructor (count = 0) {
-    if (!isNumber(count)) {
-      throw new TypeError('count需为number类型')
-    }
-    this.count = count
-    this.queue = new Array(count)
-  }
-
-  /**
-   * 设置执行顺序
-   */
-  set (val, execIndex) {
-    if (!val || !isFunction(val)) {
-      throw new Error('val必须为function')
-    }
-    if (execIndex === undefined) {
-      this.queue.push(val)
-    } else if (isNumber(execIndex)) {
-      this.queue[execIndex] = val
-    } else {
-      throw new TypeError('execIndex需为number或undefined')
-    }
-    this._exec()
-  }
-
-  /**
-   * 执行队列内函数
-   */
-  _exec () {
-    const length = this.queue.filter(v => v).length
-    if (length === this.count) {
-      console.log('exec')
-      this.queue.forEach(fn => fn())
-    }
-  }
-}
-
-const execQ = new ExecQueue(2)
+const execList = createExecList(2) // 创建执行队列
 
 export default {
   name: 'FormRender',
@@ -114,6 +74,7 @@ export default {
         return flag
       }
     },
+    // 获取props重的model, 克隆至此
     formModel: {}
   },
   data () {
@@ -126,7 +87,7 @@ export default {
       immediate: true,
       handler (val) {
         if (val) {
-          execQ.set(() => {
+          execList.set(() => {
             this.model = cloneDeep(val)
           }, 0)
         }
@@ -135,7 +96,7 @@ export default {
     fields: {
       immediate: true,
       handler (val) {
-        execQ.set(() => {
+        execList.set(() => {
           // 1. 初始化每个字段默认值
           val.forEach(field => {
             if (field.name && !this.model[field.name]) {
