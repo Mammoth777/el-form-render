@@ -3,6 +3,7 @@
     <el-form
       :model="model"
       v-bind="formProps"
+      ref="form"
     >
       <el-row :gutter="20">
         <el-col
@@ -150,6 +151,16 @@ export default {
     getNestedProperty,
     getData () {
       return cloneDeep(this.model)
+    },
+    // el-form相关方法传递
+    validate () {
+      this.$refs.form.validate()
+    },
+    resetFields () {
+      this.$refs.form.resetFields()
+    },
+    clearValidate () {
+      this.$refs.form.clearValidate()
     }
   }
 }

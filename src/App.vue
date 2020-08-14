@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <pre v-text="testData" class="code-part"></pre>
     <div class="show-part">
       <form-render
         ref="form"
@@ -21,10 +22,13 @@
       </form-render>
     </div>
     <div>
-      <el-button @click="model = $refs.form.getData()">getData</el-button> <br>
+      <el-button size="small" @click="model = $refs.form.getData()">getData</el-button>
+      <el-button size="small" @click="$refs.form.resetFields()">resetFields</el-button>
+      <el-button size="small" @click="$refs.form.validate()">validate</el-button>
+      <el-button size="small" @click="$refs.form.clearValidate()">clearValidate</el-button>
+      <br>
       <pre v-text="model" class="code-part"></pre>
     </div>
-    <pre v-text="testData" class="code-part"></pre>
   </div>
 </template>
 
