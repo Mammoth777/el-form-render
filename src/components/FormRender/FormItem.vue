@@ -26,16 +26,20 @@
 
 <script>
 import PresetSelect from './ElItemWrapper/PresetSelect.vue'
+import RadioGroup from './ElItemWrapper/RadioGroup.vue'
+import CheckboxGroup from './ElItemWrapper/CheckboxGrup.vue'
 
 export default {
   name: 'FormItem',
   inject: ['FR'],
   components: {
-    PresetSelect
+    PresetSelect,
+    RadioGroup,
+    CheckboxGroup
   },
   props: {
     config: Object,
-    value: [String, Number, Boolean]
+    value: [String, Number, Boolean, Array]
     // model: Object
   },
   computed: {

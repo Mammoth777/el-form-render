@@ -65,18 +65,50 @@ const config = [
     uiProp: {
       options: [
         { label: 'AAA', value: 1 },
-        { label: 'BBB', value: 2 }
+        { label: 'BBB', value: 2, disabled: true }
       ]
     },
     uiOn: {},
     colSpan: 12 // 1-24
   },
   {
+    name: 'nouse',
+    label: '禁用测试: ',
+    type: 'input',
+    uiProp: {
+      disabled: true,
+      size: 'small'
+    }
+  },
+  {
+    name: 'testRadioGroup',
+    label: '测试单选组',
+    type: 'radio-group',
+    defaultValue: 1,
+    uiProp: {
+      options: [
+        { label: 1, name: '第一个' },
+        { label: 2, name: '第二个' }
+      ]
+    }
+  },
+  {
+    name: 'testCheckboxGroup',
+    label: '测试多选组',
+    type: 'checkbox-group',
+    defaultValue: [1], // 注意: 多选组, 值必须为数组, 这是element要求的
+    uiProp: {
+      options: [
+        { label: 1, name: '第一个' },
+        { label: 2, name: '第二个' }
+      ]
+    }
+  },
+  {
     slot: 'getListButton',
     colSpan: 12
   }
 ]
-
 function formatCfg (configList) {
   return configList.map(config => {
     return Object.assign(

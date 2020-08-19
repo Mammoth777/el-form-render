@@ -27,7 +27,7 @@
 <script>
 import FormItem from './FormItem.vue'
 import uniqBy from 'lodash/uniqBy'
-import { setNestedProperty, getNestedProperty, createExecList } from './utils'
+import { setNestedProperty, getNestedProperty, createExecList, toKebabCase } from './utils'
 import cloneDeep from 'lodash/cloneDeep'
 
 /**
@@ -112,8 +112,11 @@ export default {
     // 表单类型转换成Element表单元素名称
     eleFields () {
       const createElType = type => {
+        type = toKebabCase(type)
         const map = {
-          select: 'PresetSelect'
+          select: 'PresetSelect',
+          'radio-group': 'RadioGroup',
+          'checkbox-group': 'CheckboxGroup'
         }
         type = type.replace(/el-/g, '')
         if (Object.values(map).includes(type)) {

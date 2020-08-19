@@ -1,5 +1,6 @@
 import nestedProperty from 'nested-property'
 import isFunction from 'lodash/isFunction'
+import kebabCase from 'lodash/kebabCase'
 import isNumber from 'lodash/isNumber'
 
 // 执行链表
@@ -57,3 +58,5 @@ export function setNestedProperty (target, prop, val) {
 export function getNestedProperty (target, prop) {
   return nestedProperty.get(target, prop)
 }
+
+export const toKebabCase = kebabCase // 字符串转连接符格式  firstName => first-name

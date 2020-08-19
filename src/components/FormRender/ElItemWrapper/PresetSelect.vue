@@ -1,5 +1,5 @@
 <template>
-  <el-select :value="value" @change="val => $emit('input', val)" v-bind="$attrs" v-on="$listeners" size="small">
+  <el-select :value="value" @change="val => $emit('input', val)" v-bind="$attrs" v-on="$listeners">
     <el-option v-for="item in options"
       :key="getNestedVal(item, keyProp)"
       :label="getNestedVal(item, labelProp)"
