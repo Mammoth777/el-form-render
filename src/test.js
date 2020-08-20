@@ -96,13 +96,20 @@ const config = [
     name: 'testCheckboxGroup',
     label: '测试多选组',
     type: 'checkbox-group',
-    defaultValue: [1], // 注意: 多选组, 值必须为数组, 这是element要求的
+    defaultValue: [2], // 注意: 多选组, 值必须为数组, 这是element要求的
     uiProp: {
       options: [
         { label: 1, name: '第一个' },
         { label: 2, name: '第二个' }
       ]
     }
+  },
+  {
+    name: 'yihangliangge',
+    label: '测试colSpan配置:',
+    type: 'text',
+    colSpan: 12,
+    defaultValue: '文字值'
   },
   {
     slot: 'getListButton',

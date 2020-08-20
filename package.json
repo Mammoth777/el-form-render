@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --dest lib src/components/FormRender/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -29,5 +30,7 @@
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "main": "lib/form-render-vue.umd.min.js",
+  "files": ["README.md", "lib/"]
 }

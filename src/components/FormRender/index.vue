@@ -114,6 +114,7 @@ export default {
       const createElType = type => {
         type = toKebabCase(type)
         const map = {
+          text: 'TextComp',
           select: 'PresetSelect',
           'radio-group': 'RadioGroup',
           'checkbox-group': 'CheckboxGroup'

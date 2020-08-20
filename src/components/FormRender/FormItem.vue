@@ -28,11 +28,13 @@
 import PresetSelect from './ElItemWrapper/PresetSelect.vue'
 import RadioGroup from './ElItemWrapper/RadioGroup.vue'
 import CheckboxGroup from './ElItemWrapper/CheckboxGrup.vue'
+import TextComp from './ElItemWrapper/TextComp.vue'
 
 export default {
   name: 'FormItem',
   inject: ['FR'],
   components: {
+    TextComp,
     PresetSelect,
     RadioGroup,
     CheckboxGroup
