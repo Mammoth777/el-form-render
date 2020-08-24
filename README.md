@@ -140,10 +140,9 @@ select的配置项里多一个options选项, 即每个select option, 如下
 
 #### Events
 
-##### on-${field.name}-change
+##### on-field-change
 
 | 参数 | 描述
 | :- | :-
-| val | change值
-| schema | jsonSchema, 即fields
-| model | 表单数据对象 
+| fieldName | 字段名
+| value | 值

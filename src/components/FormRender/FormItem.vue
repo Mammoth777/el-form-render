@@ -61,7 +61,6 @@ export default {
     },
     eventBind () {
       const handlers = this.config.uiOn
-      const emit = (name, val) => this.FR.$emit(name, val)
 
       const originChange = handlers.change
       const originInput = handlers.input
@@ -69,7 +68,10 @@ export default {
         // this.$emit('input', val)
         // console.log(val, 'change')
         // this.$set(this.FR.model, this.config.name, val)
-        emit(`on-${this.config.name}-change`, val)
+        this.FR.emit('on-field-change', {
+          fieldName: this.config.name,
+          value: val
+        })
         originChange && originChange.call(this.FR, val, this.FR.eleFields, this.FR.model)
       }
       handlers.input = (val) => {
