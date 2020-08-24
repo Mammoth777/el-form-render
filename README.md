@@ -1,10 +1,9 @@
 # form-render-vue
-
-> 测试推送到两个远程仓库
-
 > json 生成表单
 
-需求点:
+![截图](./show.jpg)
+
+Todo:
 - [x] 嵌套属性绑定数据
 - [x] 不同type生成不同表单元素
 - [x] 表单元素绑定props和events
