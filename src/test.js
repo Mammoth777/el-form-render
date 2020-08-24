@@ -114,6 +114,11 @@ const config = [
   {
     slot: 'getListButton',
     colSpan: 12
+  },
+  {
+    name: 'testClass',
+    label: 'testClass',
+    className: 'test-class'
   }
 ]
 function formatCfg (configList) {

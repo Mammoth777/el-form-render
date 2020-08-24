@@ -61,9 +61,7 @@ export default {
     },
     eventBind () {
       const handlers = this.config.uiOn
-      const emit = (name, val) => {
-        this.FR.$emit(name, val)
-      }
+      const emit = (name, val) => this.FR.$emit(name, val)
 
       const originChange = handlers.change
       const originInput = handlers.input

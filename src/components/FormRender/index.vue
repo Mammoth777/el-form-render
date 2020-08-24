@@ -14,6 +14,7 @@
           <form-item
             :config="formItem"
             :value="getNestedProperty(model, formItem.name)"
+            :class="formItem.className || ''"
           >
             <!-- 传递一层slot -->
             <slot :name="formItem.slot" :slot="formItem.slot"></slot>
@@ -63,7 +64,10 @@ export default {
   },
   props: {
     // el-form props 配置项
-    formProps: Object,
+    formProps: {
+      default: () => ({}),
+      type: Object
+    },
     fields: {
       validator (schema) {
         // todo 优化
