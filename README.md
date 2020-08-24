@@ -24,7 +24,8 @@ npm i git+http://192.168.3.208/houjiaqi/form-render-vue.git#master --save
 2. 使用
 
 ```javascript
-import FormRender from '@/components/FormRender/index.vue'
+// 注: 这里**需要**多引入一个formatCfg, 作为显式格式化json schema
+import FormRender, { formatCfg } from 'jk-form-render'
 export default {
   components: {
       FormRender
@@ -39,7 +40,7 @@ export default {
     labelPosition: 'left',
     labelWidth: '120px'
   }"
-  :fields="testData"
+  :fields="formatCfg(testData)"
   :formModel="model"
 >
   <template slot="getListButton">
