@@ -106,6 +106,10 @@ export default {
           val.forEach(field => {
             if (field.name && !this.model[field.name]) {
               setNestedProperty(this.model, field.name, field.defaultValue)
+              this.$emit('on-field-init', {
+                fieldName: field.name,
+                value: field.defaultValue
+              })
             }
           })
         }, 1)

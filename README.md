@@ -146,3 +146,10 @@ select的配置项里多一个options选项, 即每个select option, 如下
 | :- | :-
 | fieldName | 字段名
 | value | 值
+
+##### on-field-init
+
+| 参数 | 描述
+| :- | :-
+| fieldName | 字段名
+| value | 值
