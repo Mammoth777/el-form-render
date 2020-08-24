@@ -68,7 +68,7 @@ export default {
         // this.$emit('input', val)
         // console.log(val, 'change')
         // this.$set(this.FR.model, this.config.name, val)
-        this.FR.emit('on-field-change', {
+        this.FR.$emit('on-field-change', {
           fieldName: this.config.name,
           value: val
         })
