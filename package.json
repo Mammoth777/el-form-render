@@ -31,6 +31,6 @@
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   },
-  "main": "lib/form-render-vue.umd.min.js",
+  "main": "lib/jk-form-render.umd.min.js",
   "files": ["README.md", "lib/"]
 }
