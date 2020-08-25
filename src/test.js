@@ -55,7 +55,11 @@ const config = [
         }
       ]
     },
-    uiOn: {},
+    uiOn: {
+      blur (val) {
+        console.log(this, '是不是FR的vm?')
+      }
+    },
     uiHide: model => model.test.a.b.c === true
   },
   {

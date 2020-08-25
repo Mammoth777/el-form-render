@@ -82,6 +82,14 @@ export default {
     eventBind () {
       const handlers = this.config.uiOn
 
+      // 1. 给所有的事件绑定this
+      Object.keys(handlers).forEach(eventName => {
+        const originHandler = handlers[eventName]
+        handlers[eventName] = val => {
+          originHandler && originHandler.call(this.FR, val, this.FR.eleFields, this.FR.model)
+        }
+      })
+
       const originChange = handlers.change
       const originInput = handlers.input
       handlers.change = (val) => {
