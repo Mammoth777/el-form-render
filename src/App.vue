@@ -44,7 +44,11 @@ export default {
   data () {
     return {
       testData,
-      model: {}
+      model: {
+        info: {
+          a: '我覆盖默认值'
+        }
+      }
     }
   },
   methods: {

@@ -45,7 +45,7 @@ const config = [
     name: 'info.a',
     label: '嵌套属性测试',
     type: 'input',
-    defaultValue: '',
+    defaultValue: '测试',
     uiProp: {
       rules: [
         {

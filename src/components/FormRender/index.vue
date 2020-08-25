@@ -93,6 +93,7 @@ export default {
       handler (val) {
         if (val) {
           execList.set(() => {
+            // 0. 深克隆模型数据值
             this.model = cloneDeep(val)
           }, 0)
         }
@@ -105,7 +106,9 @@ export default {
           // 1. 初始化每个字段默认值
           val.forEach(field => {
             if (field.name && !this.model[field.name]) {
-              setNestedProperty(this.model, field.name, field.defaultValue)
+              const valueInModel = getNestedProperty(this.model, field.name)
+              const defaultValue = valueInModel === undefined ? field.defaultValue : valueInModel
+              setNestedProperty(this.model, field.name, defaultValue)
               this.$emit('on-field-init', {
                 fieldName: field.name,
                 value: field.defaultValue
