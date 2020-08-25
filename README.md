@@ -76,6 +76,7 @@ export default {
 | type | string | 'input' | 表单元素类型, input/switch/select/checkbox-group/radio-group等element支持的类型, 以及 text
 | defaultValue | any | '张三' | 默认值, 会优先取数据对象中的数据
 | slot | string | 'submitBtn' | 设置此表单元素为插槽类型, 值为插槽名, 使用方式如上述Quick start所示
+| component | VueConstructor | 传入自定义组件, 此项有值, 则忽略type, **注意**: 必须设置自定义组件的v-model, 要求有一个prop是value, 会触发一个input事件
 | uiProp | object | {} | 传递给表单元素的props, 具体参考element每个表单元素的props(有特殊情况, 在下面说明)
 | uiOn | object | {} | 对表单元素绑定的事件, (val: 事件传递的值, schema: 即fields, model: 表单数据对象, event: 原始事件对象, 可能为空) => void; 
 | uiHide | (model) => boolean | 当前表单元素是否隐藏, 参数为表单数据对象

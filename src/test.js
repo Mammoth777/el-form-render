@@ -1,3 +1,4 @@
+import Demo from './components/CustomComps/Demo.vue'
 const config = [
   {
     name: 'test.a.b.c',
@@ -119,6 +120,12 @@ const config = [
     name: 'testClass',
     label: 'testClass',
     className: 'test-class'
+  },
+  {
+    name: 'diyComp',
+    label: '自定义组件',
+    component: Demo,
+    defaultValue: '0'
   }
 ]
 function formatCfg (configList) {

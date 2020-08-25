@@ -36,6 +36,8 @@
 import FormRender from '@/components/FormRender/index.vue'
 import testData from './test'
 
+console.log(FormRender)
+
 export default {
   name: 'App',
   components: {
