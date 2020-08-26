@@ -36,10 +36,22 @@
 </template>
 
 <script>
-import PresetSelect from './ElItemWrapper/PresetSelect.vue'
-import RadioGroup from './ElItemWrapper/RadioGroup.vue'
-import CheckboxGroup from './ElItemWrapper/CheckboxGrup.vue'
-import TextComp from './ElItemWrapper/TextComp.vue'
+
+const requireComponent = require.context(
+  './ElItemWrapper', // 引入此路径区南部组件
+  false, // 不查询子路径
+  /\w+\.vue$/ // 匹配基础组件文件名的正则表达式
+)
+
+const comObj = {}
+requireComponent.keys().forEach(fileName => {
+  // 获取文件名
+  const names = fileName.split('/').pop().replace(/\.\w+$/, '')
+  // 获取组件配置
+  const componentConfig = requireComponent(fileName)
+  // 若该组件是通过"export default"导出的，优先使用".default"，否则退回到使用模块的根
+  comObj[names] = componentConfig.default || componentConfig
+})
 
 export default {
   name: 'FormItem',
@@ -54,10 +66,7 @@ export default {
       functional: true,
       render: (h, ctx) => h(ctx.props.component, ctx.data, ctx.children)
     },
-    TextComp,
-    PresetSelect,
-    RadioGroup,
-    CheckboxGroup
+    ...comObj
   },
   props: {
     config: Object,

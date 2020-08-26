@@ -125,9 +125,10 @@ export default {
       const createElType = type => {
         type = toKebabCase(type)
         const map = {
-          text: 'TextComp',
+          text: 'TextComp', // 对应ElItemWrapper内组件名
           select: 'PresetSelect',
           'radio-group': 'RadioGroup',
+          checkbox: 'PresetCheckbox',
           'checkbox-group': 'CheckboxGroup'
         }
         type = type.replace(/el-/g, '')

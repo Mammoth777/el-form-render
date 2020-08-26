@@ -130,6 +130,17 @@ const config = [
     label: '自定义组件',
     component: Demo,
     defaultValue: '0'
+  },
+  {
+    name: 'testCheckbox',
+    label: '测试单个多选',
+    type: 'checkbox',
+    defaultValue: 0,
+    uiProp: {
+      text: '文字内容',
+      trueLabel: 1,
+      falseLabel: 0
+    }
   }
 ]
 function formatCfg (configList) {
