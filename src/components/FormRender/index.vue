@@ -30,6 +30,7 @@ import FormItem from './FormItem.vue'
 import uniqBy from 'lodash/uniqBy'
 import { setNestedProperty, getNestedProperty, createExecList, toKebabCase } from './utils'
 import cloneDeep from 'lodash/cloneDeep'
+import isObject from 'lodash/isObject'
 
 /**
  * 验证名称重复
@@ -163,6 +164,21 @@ export default {
         }
       )
       this.model = { ...this.model }
+    },
+    /**
+     * 更新整个表单数据
+     */
+    updateForm (formModel) {
+      if (!isObject(formModel)) {
+        throw new Error('更新表单数据处报错: formModel 不是对象')
+      }
+      this.fields.forEach(field => {
+        const newVal = getNestedProperty(formModel, field.name)
+        const oldVal = getNestedProperty(this.model, field.name)
+        if (newVal !== oldVal) {
+          setNestedProperty(this.model, field.name, newVal)
+        }
+      })
     },
     getFieldValue (name) {
       return getNestedProperty(this.model, name)

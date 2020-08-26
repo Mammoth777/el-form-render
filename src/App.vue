@@ -62,6 +62,13 @@ export default {
         value: len
       })
     }
+  },
+  created () {
+    setTimeout(() => {
+      console.log('updated')
+      this.model.info.a = '更新了'
+      this.$refs.form.updateForm(this.model)
+    }, 5000)
   }
 }
 </script>
