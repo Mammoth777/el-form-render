@@ -133,7 +133,7 @@ const config = [
   },
   {
     name: 'testCheckbox',
-    label: '测试单个多选',
+    // label: '测试单个多选',
     type: 'checkbox',
     defaultValue: 0,
     uiProp: {

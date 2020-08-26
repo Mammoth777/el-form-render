@@ -13,7 +13,7 @@
         >
           <form-item
             :config="formItem"
-            :value="getNestedProperty(model, formItem.name)"
+            :value="getFieldValue(formItem.name)"
             :class="formItem.className || ''"
           >
             <!-- 传递一层slot -->
@@ -106,7 +106,7 @@ export default {
           // 1. 初始化每个字段默认值
           val.forEach(field => {
             if (field.name && !this.model[field.name]) {
-              const valueInModel = getNestedProperty(this.model, field.name)
+              const valueInModel = this.getFieldValue(field.name)
               const defaultValue = valueInModel === undefined ? field.defaultValue : valueInModel
               setNestedProperty(this.model, field.name, defaultValue)
               this.$emit('on-field-init', {
@@ -164,7 +164,9 @@ export default {
       )
       this.model = { ...this.model }
     },
-    getNestedProperty,
+    getFieldValue (name) {
+      return getNestedProperty(this.model, name)
+    },
     getData () {
       return cloneDeep(this.model)
     },

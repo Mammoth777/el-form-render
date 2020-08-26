@@ -137,6 +137,21 @@ select的配置项里多一个options选项, 即每个select option, 如下
 }
 ```
 
+##### Checkbox
+checkbox 的配置多了个`text`选项, 即每个checkbox的slot值
+```javascript
+{
+  name: 'testCheckbox',
+  label: '测试单个多选',
+  type: 'checkbox',
+  defaultValue: 0,
+  uiProp: {
+    text: '文字内容',
+    trueLabel: 1,
+    falseLabel: 0
+  }
+}
+```
 
 
 #### Events

@@ -11,7 +11,14 @@
     v-show="!isHide"
     v-bind="itemProp"
     :prop="config.name"
+    :label="typeof itemProp.label === 'string' ? itemProp.label : ''"
   >
+    <!-- 用户自定义label -->
+    <v-node
+      v-if="typeof itemProp.label !== 'string'"
+      slot="label"
+      :content="itemProp.label"
+    />
     <!-- 1. 用户自定义的组件 -->
     <custom-component
       v-if="config.component"
@@ -53,6 +60,8 @@ requireComponent.keys().forEach(fileName => {
   comObj[names] = componentConfig.default || componentConfig
 })
 
+console.log(`已注册: ${Object.keys(comObj).join(', ')}`)
+
 export default {
   name: 'FormItem',
   inject: ['FR'],
@@ -65,6 +74,10 @@ export default {
     CustomComponent: {
       functional: true,
       render: (h, ctx) => h(ctx.props.component, ctx.data, ctx.children)
+    },
+    VNode: {
+      functional: true,
+      render: (h, ctx) => ctx.props.content
     },
     ...comObj
   },
@@ -101,6 +114,7 @@ export default {
 
       const originChange = handlers.change
       const originInput = handlers.input
+      // 拦截change事件
       handlers.change = (val) => {
         // this.$emit('input', val)
         // console.log(val, 'change')
@@ -111,6 +125,7 @@ export default {
         })
         originChange && originChange.call(this.FR, val, this.FR.eleFields, this.FR.model)
       }
+      // 拦截input事件
       handlers.input = (val) => {
         // this.$set(this.model, this.config.name, val)
         this.FR.updateValue(this.config.name, val)
