@@ -133,7 +133,7 @@ export default {
           'checkbox-group': 'CheckboxGroup'
         }
         type = type.replace(/el-/g, '')
-        if (Object.values(map).includes(type)) {
+        if (Object.values(map).map(v => toKebabCase(v)).includes(type)) {
           return type
         } else {
           return map[type] || 'el-' + type
