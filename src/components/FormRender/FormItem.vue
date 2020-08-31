@@ -77,7 +77,13 @@ export default {
     },
     VNode: {
       functional: true,
-      render: (h, ctx) => ctx.props.content
+      render: (h, ctx) => {
+        const content = ctx.props.content
+        if (typeof content === 'function') {
+          return content.call(this, h)
+        }
+        return ctx.props.content
+      }
     },
     ...comObj
   },

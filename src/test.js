@@ -141,6 +141,12 @@ const config = [
       trueLabel: 1,
       falseLabel: 0
     }
+  },
+  {
+    name: 'testLabel',
+    label: h => h('div', {}, 'test label'),
+    type: 'text',
+    defaultValue: 'label...'
   }
 ]
 function formatCfg (configList) {

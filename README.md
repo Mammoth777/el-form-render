@@ -72,7 +72,7 @@ export default {
 | Fields Item Key | 类型 | 例子 | 描述
 | :- | :- | :- | :-
 | name | string | 'name.firstName' | 绑定在表单数据上的key, 必须唯一
-| label | string | '姓名' | 表单元素的标签文本
+| label | string | '姓名' | 表单元素的标签文本, 或vue组件当作插入label插槽
 | type | string | 'input' | 表单元素类型, input/switch/select/checkbox-group/radio-group等element支持的类型, 以及 text
 | defaultValue | any | '张三' | 默认值, 会优先取数据对象中的数据
 | slot | string | 'submitBtn' | 设置此表单元素为插槽类型, 值为插槽名, 使用方式如上述Quick start所示
@@ -113,6 +113,18 @@ fields item示例
       // config.label = val + '名称'
     }
   }
+}
+```
+
+##### label slot
+自定义label, 插槽方式
+
+```javascript
+{
+  name: 'testLabel',
+  label: h => h('div', {}, 'test label'),
+  type: 'text',
+  defaultValue: 'label...'
 }
 ```
 
